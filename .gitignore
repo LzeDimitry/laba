@@ -1,0 +1,27 @@
+# secrets and credentials
+.env
+*.pem
+*.key
+*.p12
+license.json
+secrets/
+config/credentials.*
+
+# build artifacts
+build/
+dist/
+*.whl
+*.egg-info/
+__pycache__/
+*.pyc
+
+# local runtime data
+.cache/
+var/
+logs/
+*.log
+
+# editor / OS
+.idea/
+.vscode/
+.DS_Store
