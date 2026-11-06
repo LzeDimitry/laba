@@ -1,0 +1,24 @@
+== 1. Формування файлу ліцензії ==
+{
+  "product_id": "secure-update-client",
+  "license_owner": "Tovt Rastislav",
+  "expires_at": "2027-06-30",
+  "features": ["release.publish", "release.sign", "channel.beta"],
+  "license_id": "SUC-2026-0001-7f3a"
+}
+
+== 2. Генерація пари ключів RSA 3072 ==
+-rw------- 2484 private.pem
+-rw-r--r-- 625 public.pem
+
+== 3. Підпис ліцензії (RSA-PSS, SHA-256) ==
+license.sig: 384 байт
+
+== 4. Перевірка підпису відкритим ключем ==
+Verified OK
+
+== 5. Підміна строку дії без оновлення підпису ==
+  "expires_at": "2030-12-31",
+4064BC5AE47F0000:error:02000068:rsa routines:ossl_rsa_verify_PKCS1_PSS_mgf1:bad signature:crypto/rsa/rsa_pss.c:144:
+4064BC5AE47F0000:error:1C880004:Provider routines:rsa_verify_directly:RSA lib:providers/implementations/signature/rsa_sig.c:1106:
+Verification failure

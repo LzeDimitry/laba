@@ -67,7 +67,10 @@ def main() -> None:
     sealed = aes_gcm_encrypt(aes_key, data, aad=b"release-manifest")
     print(f"AES-GCM ключ:        {aes_key.hex()}")
     print(f"Nonce:               {sealed.nonce.hex()}")
-    print(f"Шифротекст+тег:      {sealed.ciphertext.hex()}")
+    blob = sealed.ciphertext.hex()
+    print("Шифротекст+тег:")
+    for i in range(0, len(blob), 64):
+        print(f"  {blob[i:i + 64]}")
     print(f"  розшифрування:     {aes_gcm_decrypt(aes_key, sealed.nonce, sealed.ciphertext, aad=b'release-manifest').decode()}")
     broken = tamper(sealed.ciphertext)
     try:
